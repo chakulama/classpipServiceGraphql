@@ -1,0 +1,194 @@
+type User {
+  id: ID! @id
+  name: String!
+}
+
+type Answeer{
+   id: ID! @id
+  name: String!
+}
+
+type Avatar{
+   id: ID! @id
+  image: String!
+}
+type Badge{
+   id: ID! @id
+   name:String!
+  image: String!
+  value:Int!
+}
+type BadgeRelation{
+ id: ID! @id
+  value:Int!
+}
+
+type Card{
+ id: ID! @id
+ name:String!
+image: String!
+ratio:String!
+  rank:String!
+}
+type CollectionCard{
+ id: ID! @id
+  name:String!
+  image: String!
+  num:String!
+  value:Int!
+  createdBy:String!
+  badgeId:String
+}
+
+type Competition{
+  id: ID! @id
+  mode:String!
+  name: String!
+  numJourneys:Int!
+  information:String
+  automation:String
+  pointId:String!
+}
+
+type CorrectAnswer{
+ id: ID! @id
+  name:String!
+}
+
+type Grade{
+ id: ID! @id
+  name:String!
+}
+type Group{
+ id: ID! @id
+  name:String!
+}
+
+
+
+
+type Journey{
+ id: ID! @id
+  number:Int!
+  date:String
+}
+
+
+type Match{
+ id: ID! @id
+  playerOne:Int!
+  playerTwo:Int!
+  winner:Int
+}
+
+
+type Point{
+ id: ID! @id
+  name:String!
+  image:String!
+  value:Int!
+}
+
+type PointRelation{
+ id: ID! @id
+  value:Int!
+}
+
+type Question{
+ id: ID! @id
+  name:String!
+  type:String!
+  image:String
+  time:Int!
+}
+
+
+type Questionnaire{
+ id: ID! @id
+  name:String!
+  date:String!
+  points:String
+  badges:Int
+  groupid:String
+  packCards:Int
+  active:Boolean!
+
+}
+type Range{
+ id: ID! @id
+  nombreRango:String!
+  puntosRango:Int!
+  imageRangoLink:String!
+  altImageRangoLink:String
+}
+type ResultQuestionnaire{
+ id: ID! @id
+  questionnaire:Questionnaire!
+  student:Student!
+  questionnaireName:String!
+  numTotalQuestions:Int!
+  numAnswerCorrect:Int!
+  numAnswerNoCorrect:Int!
+  finalNote:Int!
+  dataAnswers:String!
+
+}
+type Reward{
+ id: ID! @id
+  points:Int!
+  points_obj:String!
+  badges_obj:String
+  level:Int!
+  next_level_points:Int!
+  rank:String!
+}
+
+
+type SchoolAdmin{
+ id: ID! @id
+  name:String!
+  surname:String!
+}
+
+type School{
+ id: ID! @id
+  name:String!
+  address:String!
+  image:String
+  imageBig:Int!
+  zipCode:String!
+  city:String!
+ country:String!
+  latitude:String!
+  longitude:String!
+  cif:String!
+phone:String!
+website:String!
+facebook:String!
+twitter:String!
+description:String!
+}
+
+type Student{
+ id: ID! @id
+  name:String!
+  surname:String!
+  profileImage:String!
+  level:Int!
+  next_level_points:Int!
+  rank:String!
+}
+
+type Teacher{
+ id: ID! @id
+  name:String!
+  surname:String!
+  profileImage:String  
+}
+type Team{
+  id:ID!@id
+  name:String!
+}
+
+
+
