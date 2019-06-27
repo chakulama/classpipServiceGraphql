@@ -1,22 +1,22 @@
-type User {
-  id: ID! @id
-  name: String!
-}
-
-type Answeer{
+type Answer{
    id: ID! @id
   name: String!
 }
 
 type Avatar{
    id: ID! @id
+    name: String!
   image: String!
+  accounts:[Student!]!
 }
 type Badge{
    id: ID! @id
    name:String!
   image: String!
   value:Int!
+  badgeRelations:[BadgeRelation!]!
+  students:[Student!]!
+
 }
 type BadgeRelation{
  id: ID! @id
@@ -29,6 +29,7 @@ type Card{
 image: String!
 ratio:String!
   rank:String!
+  students:[Student!]!
 }
 type CollectionCard{
  id: ID! @id
@@ -38,16 +39,25 @@ type CollectionCard{
   value:Int!
   createdBy:String!
   badgeId:String
+  cards:[Card!]!
+  teachers:[Teacher!]!
+  students:[Student!]!
+  groups:[Group!]!
 }
 
 type Competition{
   id: ID! @id
+  type:String!
   mode:String!
   name: String!
   numJourneys:Int!
   information:String
   automation:String
   pointId:String!
+  journeys:[Journey!]!
+  students:[Student!]!
+  teams:[Team!]!
+
 }
 
 type CorrectAnswer{
@@ -58,19 +68,23 @@ type CorrectAnswer{
 type Grade{
  id: ID! @id
   name:String!
+  matters:[Matter!]!
+  groups:[Group!]!
 }
 type Group{
  id: ID! @id
   name:String!
+  students:[Student!]!
+  collectionCards:[CollectionCard!]!
+  competitions:[Competition!]!
+  teams:[Team!]!
 }
-
-
-
 
 type Journey{
  id: ID! @id
   number:Int!
   date:String
+  matches:[Match!]!
 }
 
 
@@ -81,12 +95,19 @@ type Match{
   winner:Int
 }
 
-
+type Matter{
+   id: ID! @id
+   name:String!
+   grades:[Grade!]!
+   groups:[Group!]!
+}
 type Point{
  id: ID! @id
   name:String!
   image:String!
   value:Int!
+  pointRelations:[PointRelation!]!
+  students:[Student!]!
 }
 
 type PointRelation{
@@ -100,6 +121,8 @@ type Question{
   type:String!
   image:String
   time:Int!
+  answers:[Answer!]!
+  correctAnswers:[CorrectAnswer!]!
 }
 
 
@@ -112,6 +135,7 @@ type Questionnaire{
   groupid:String
   packCards:Int
   active:Boolean!
+  questions:[Question!]!
 
 }
 type Range{
@@ -167,6 +191,14 @@ website:String!
 facebook:String!
 twitter:String!
 description:String!
+teachers:[Teacher!]!
+points:[Point!]!
+badges:[Badge!]!
+students:[Student!]!
+grades:[Grade!]!
+matters:[Matter!]!
+ranges:[Range!]!
+groups:[Group!]!
 }
 
 type Student{
@@ -174,20 +206,34 @@ type Student{
   name:String!
   surname:String!
   profileImage:String!
-  level:Int!
-  next_level_points:Int!
-  rank:String!
-}
+ group:[Group!]!
+ questionnaires:[Questionnaire!]!
+ badges:[Badge!]!
+ collectionCards:[CollectionCard!]!
+ cards:[Card!]!
+ pointRelations:[PointRelation!]!
+ badgeRelations:[BadgeRelation!]!
+ points:[Point!]!
+ competitions:[Competition!]!
+ teams:[Team!]!
+ rewards:Reward!
+ }
 
 type Teacher{
  id: ID! @id
   name:String!
   surname:String!
-  profileImage:String  
+  profileImage:String !
+  groups:[Group!]!
+  questionnaires:[Questionnaire!]!
+  collectionCards:[CollectionCard!]!
+
 }
 type Team{
   id:ID!@id
   name:String!
+  competitions:[Competition!]!
+  students:[Student!]!
 }
 
 
